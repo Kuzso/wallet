@@ -1,0 +1,174 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="wallet2.app.Income"
+    >
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:weightSum="1"
+                android:id="@+id/linearLayout">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Title: "
+                    android:id="@+id/textView"
+                    android:paddingBottom="15dp" />
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:inputType="text"
+                    android:ems="10"
+                    android:id="@+id/incTitle"
+                    android:autoText="false" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/linearLayout"
+                android:id="@+id/linearLayout2">
+
+                <TextView
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Amount: "
+                    android:id="@+id/textView2"
+                    android:paddingBottom="15dp" />
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:ems="10"
+                    android:id="@+id/incAm"
+                    android:autoText="false"
+                    android:inputType="number" />
+
+            </LinearLayout>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/incpn"
+                android:layout_weight="0"
+                android:layout_below="@+id/linearLayout2"
+                android:layout_alignParentRight="true"
+                android:minLines="3"
+                android:layout_gravity="right"
+                android:spinnerMode="dialog" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/linearLayout"
+                android:id="@+id/linearLayout3" >
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Custom Date"
+                    android:id="@+id/checkBox"
+                    android:checked="false"
+                    android:onClick="DateCheck" />
+
+            </LinearLayout>
+
+         <HorizontalScrollView
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/linearLayout"
+                android:id="@+id/linearLayout4"
+                android:visibility="gone">
+
+                <DatePicker
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/datePicker"
+                    android:calendarViewShown="true"
+                    android:spinnersShown="true" />
+            </LinearLayout>
+         </HorizontalScrollView>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/scrollView2"
+                android:layout_gravity="bottom"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/scrollView"
+                android:layout_above="@+id/incaddbtn">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignTop="@+id/scrollView2"
+                    android:layout_alignParentLeft="true"
+                    android:layout_above="@+id/incaddbtn">
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="150dp"
+                        android:id="@+id/incetc"
+
+                        android:textIsSelectable="false"
+                        android:minLines="1"
+                        android:maxLines="9"
+
+                        android:layout_alignBottom="@+id/scrollView"
+                        android:layout_alignParentLeft="true"
+                        android:inputType="text"
+                        android:hint="ETC"
+                        android:lines="3" />
+                </LinearLayout>
+            </ScrollView>
+
+            <FrameLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingTop="5dp">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add"
+                    android:id="@+id/incaddbtn"
+                    android:layout_alignParentBottom="false"
+                    android:layout_centerHorizontal="true"
+                    android:onClick="incaddOnclick" />
+            </FrameLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

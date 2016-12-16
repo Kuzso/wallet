@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Wallet</string>
+    <string name="uvenow">You have now:</string>
+    <string name="gonldata">Get online data</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Upload data</string>
+    <string name="logout">Logout</string>
+    <string name="title_activity_income_add">Income_add</string>
+    <string name="title_activity_props">props</string>
+    <string name="title_activity_firstrun">First run</string>
+    <string name="title_activity_online">Online</string>
+
+</resources>
