@@ -1,0 +1,14 @@
+-- online checker - ha nem él a szerver, ne dobja vissza
+
+
+Fordítani:
+
+Fő: Income  - Bevétel
+    Expense - Kiadás
+    
+ szöveg: record income: - bejegyzés, bevétel:
+         and expense:   - és kiadás: 
+         
+         
+Online: Login    - Bejelentkezés
+        Register - Regisztárció
