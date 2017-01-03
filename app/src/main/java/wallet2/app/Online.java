@@ -84,7 +84,7 @@ public class Online extends Activity {
 
             public void onItemClick(AdapterView a, View v, int position, long id) {
                 TextView clickedView = (TextView) v.findViewById(android.R.id.text1);
-               // setClicked(lista.getItemAtPosition(position).toString());
+                // setClicked(lista.getItemAtPosition(position).toString());
                 if (getStep()==0){
                     setYearmnt(clickedView.getText().toString());
                     new LoadDays().execute();
@@ -168,7 +168,7 @@ public class Online extends Activity {
             db.close();
             // getting JSON string from URL
             Log.d("cucc: ", params.toString());
-            JSONObject json = jsonParser.makeHttpRequest("http://192.168.1.2/Elo/getdatum.php", "POST", params);
+            JSONObject json = jsonParser.makeHttpRequest("http://127.0.0.1/wallet/getdatum.php", "POST", params);
 
             // Check your log cat for JSON reponse
             Log.d("All Products: ", json.toString());
@@ -256,7 +256,7 @@ public class Online extends Activity {
             List.clear();
             // getting JSON string from URL
             Log.d("cucc: ", params.toString());
-            JSONObject json = jsonParser.makeHttpRequest("http://192.168.1.2/Elo/getnap.php", "POST", params);
+            JSONObject json = jsonParser.makeHttpRequest("http://127.0.0.1/wallet/getnap.php", "POST", params);
 
 
             // Check your log cat for JSON reponse
@@ -360,7 +360,7 @@ public class Online extends Activity {
             List.clear();
             // getting JSON string from URL
             Log.d("cucc: ", params.toString());
-            JSONObject json = jsonParser.makeHttpRequest("http://192.168.1.2/Elo/getrec.php", "POST", params);
+            JSONObject json = jsonParser.makeHttpRequest("http://127.0.0.1/wallet/getrec.php", "POST", params);
 
             // Check your log cat for JSON reponse
             Log.d("All Products: ", json.toString());
