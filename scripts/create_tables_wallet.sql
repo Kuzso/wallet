@@ -36,7 +36,7 @@ CREATE TABLE `wallet`.`inout` ( `uid` BIGINT NOT NULL , `yearmonth` VARCHAR(10) 
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2017. Jan 09. 09:53
+-- Létrehozás ideje: 2017. Jan 09. 14:22
 -- Kiszolgáló verziója: 5.7.14
 -- PHP verzió: 5.6.25
 
@@ -78,10 +78,17 @@ CREATE TABLE `inout` (
 --
 
 CREATE TABLE `users` (
-  `uid` bigint(20) NOT NULL,
+  `uid` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(100) COLLATE utf8_hungarian_ci NOT NULL,
   `password` varchar(100) COLLATE utf8_hungarian_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_hungarian_ci COMMENT='Wallet Users';
+
+--
+-- A tábla adatainak kiíratása `users`
+--
+
+INSERT INTO `users` (`uid`, `name`, `password`) VALUES
+(1001, 'tst', 'tst');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -93,6 +100,15 @@ CREATE TABLE `users` (
 ALTER TABLE `users`
   ADD PRIMARY KEY (`uid`);
 
+--
+-- A kiírt táblák AUTO_INCREMENT értéke
+--
+
+--
+-- AUTO_INCREMENT a táblához `users`
+--
+ALTER TABLE `users`
+  MODIFY `uid` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

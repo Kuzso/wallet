@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogReg extends Activity implements OnClickListener {
-    private static final String LOGIN_URL = "http://10.0.0.2/wallet/login.php";
-    private static final String REGISTER_URL = "http://10.0.0.2/wallet/register.php";
+    private static final String LOGIN_URL = "http://10.0.2.2/wallet/login.php";
+    private static final String REGISTER_URL = "http://10.0.2.2/wallet/register.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
     JSONParser jsonParser = new JSONParser();
@@ -96,6 +96,7 @@ public class LogReg extends Activity implements OnClickListener {
 
                 Log.d("request!", "starting");
                 // getting product details by making HTTP request
+
                 JSONObject json = jsonParser.makeHttpRequest(
                         LOGIN_URL, "POST", params);
 
@@ -117,6 +118,7 @@ public class LogReg extends Activity implements OnClickListener {
 
                 }
             } catch (JSONException e) {
+                pDialog.dismiss();
                 e.printStackTrace();
             }
 

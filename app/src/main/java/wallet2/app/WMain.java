@@ -395,7 +395,7 @@ public class WMain extends Activity {
                         Log.d("request!", "starting");
                         //Posting user data to script
                          json = jsonParser.makeHttpRequest(
-                                "http://192.168.1.2/Elo/insert.php", "POST", params);
+                                "http://10.0.2.2/wallet/insert.php", "POST", params);
 
                         // full json response
                         Log.d("Attempt upload", json.toString());
@@ -483,7 +483,7 @@ public class WMain extends Activity {
                     Log.d("request!", "starting");
                     //Posting user data to script
                     JSONObject json = jsonParser.makeHttpRequest(
-                            "http://192.168.1.2/Elo/getmoney.php", "POST", params);
+                            "http://10.0.2.2/wallet/getmoney.php", "POST", params);
 
                     // full json response
                     Log.d("Attempt Download", json.toString());
