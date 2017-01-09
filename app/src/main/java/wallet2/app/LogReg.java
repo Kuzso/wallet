@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LogReg extends Activity implements OnClickListener {
-    private static final String LOGIN_URL = "http://192.168.1.2/Elo/login.php";
-    private static final String REGISTER_URL = "http://192.168.1.2/Elo/register.php";
+    private static final String LOGIN_URL = "http://10.0.0.2/wallet/login.php";
+    private static final String REGISTER_URL = "http://10.0.0.2/wallet/register.php";
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
     JSONParser jsonParser = new JSONParser();
@@ -51,12 +51,14 @@ public class LogReg extends Activity implements OnClickListener {
     @Override
     public void onClick(View v) {
         // TODO Auto-generated method stub
+        String username = name.getText().toString();
+        String pwd = password.getText().toString();
         switch (v.getId()) {
             case R.id.button1:
-                new AttemptLogin().execute();
+                new AttemptLogin().execute(username, pwd);
                 break;
             case R.id.btnreg:
-                new CreateUser().execute();
+                new CreateUser().execute(username, pwd);
                 break;
 
             default:
@@ -86,13 +88,11 @@ public class LogReg extends Activity implements OnClickListener {
             // TODO Auto-generated method stub
             // Check for success tag
             int success;
-            String username = name.getText().toString();
-            String pwd = password.getText().toString();
             try {
                 // Building Parameters
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("username", username));
-                params.add(new BasicNameValuePair("password", pwd));
+                params.add(new BasicNameValuePair("username", args[0]));
+                params.add(new BasicNameValuePair("password", args[1]));
 
                 Log.d("request!", "starting");
                 // getting product details by making HTTP request
@@ -162,13 +162,11 @@ public class LogReg extends Activity implements OnClickListener {
             // TODO Auto-generated method stub
             // Check for success tag
             int success;
-            String username = name.getText().toString();
-            String pwd = password.getText().toString();
             try {
                 // Building Parameters
                 List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("name", username));
-                params.add(new BasicNameValuePair("password", pwd));
+                params.add(new BasicNameValuePair("name", args[0]));
+                params.add(new BasicNameValuePair("password", args[1]));
 
                 Log.d("request!", "starting");
 

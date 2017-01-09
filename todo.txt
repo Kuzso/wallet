@@ -10,5 +10,16 @@ Fő: Income  - Bevétel
          and expense:   - és kiadás: 
          
          
-Online: Login    - Bejelentkezés
+Online: Login    - Bejelentkezés + (Attempting login - töltőképernyő)
         Register - Regisztárció
+        
+dialog message: loading..
+
+Main? : 
+You have now: 
+
+Currency:
+
+Favorited currency:
+
+Thank you for try my first application! If you have any idea about how can this be better, then please send me an e-mail to the xxx.com address!    The maker.

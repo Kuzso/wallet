@@ -168,7 +168,7 @@ public class Online extends Activity {
             db.close();
             // getting JSON string from URL
             Log.d("cucc: ", params.toString());
-            JSONObject json = jsonParser.makeHttpRequest("http://127.0.0.1/wallet/getdatum.php", "POST", params);
+            JSONObject json = jsonParser.makeHttpRequest("http://10.0.0.2/wallet/getdatum.php", "POST", params);
 
             // Check your log cat for JSON reponse
             Log.d("All Products: ", json.toString());
@@ -256,7 +256,7 @@ public class Online extends Activity {
             List.clear();
             // getting JSON string from URL
             Log.d("cucc: ", params.toString());
-            JSONObject json = jsonParser.makeHttpRequest("http://127.0.0.1/wallet/getnap.php", "POST", params);
+            JSONObject json = jsonParser.makeHttpRequest("http://10.0.0.2/wallet/getnap.php", "POST", params);
 
 
             // Check your log cat for JSON reponse
@@ -360,7 +360,7 @@ public class Online extends Activity {
             List.clear();
             // getting JSON string from URL
             Log.d("cucc: ", params.toString());
-            JSONObject json = jsonParser.makeHttpRequest("http://127.0.0.1/wallet/getrec.php", "POST", params);
+            JSONObject json = jsonParser.makeHttpRequest("http://10.0.0.2/wallet/getrec.php", "POST", params);
 
             // Check your log cat for JSON reponse
             Log.d("All Products: ", json.toString());
