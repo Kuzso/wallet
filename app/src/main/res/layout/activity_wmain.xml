@@ -40,7 +40,7 @@
         android:layout_alignParentTop="false"
         android:layout_alignParentLeft="false"
         android:layout_alignParentBottom="true"
-        android:id="@+id/linearLayout">
+        android:id="@+id/innerLinLayout">
 
         <Button
             android:layout_width="wrap_content"
@@ -65,6 +65,6 @@
         android:id="@+id/ALista"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/linearLayout2"
-        android:layout_above="@+id/linearLayout" />
+        android:layout_above="@+id/innerLinLayout" />
 
 </RelativeLayout>
