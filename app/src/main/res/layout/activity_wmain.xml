@@ -7,32 +7,6 @@
     android:id="@+id/WRllay">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="75dp"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentLeft="false"
-        android:weightSum="1"
-        android:id="@+id/linearLayout2">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="39dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/uvenow"
-            android:id="@+id/textView" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/gonldata"
-            android:id="@+id/button3"
-            android:onClick="onlbtnClick" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
@@ -66,5 +40,53 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/linearLayout2"
         android:layout_above="@+id/innerLinLayout" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:weightSum="1"
+        android:id="@+id/linearLayout2"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="39dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/uvenow"
+            android:id="@+id/textView" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:text="@string/gonldata"
+            android:id="@+id/button3"
+            android:onClick="onlbtnClick"
+            android:layout_height="40dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/sstatusLayout">
+
+            <TextView
+                android:text="Server status:"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/sStatusTxt"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/checkBox2"
+                android:clickable="false"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/sStatusTxt" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
 
 </RelativeLayout>
