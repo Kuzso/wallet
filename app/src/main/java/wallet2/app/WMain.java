@@ -9,12 +9,15 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -30,6 +33,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 public class WMain extends Activity {
     private ProgressDialog pDialog;
@@ -63,10 +68,20 @@ public class WMain extends Activity {
         WMain.day = day;
     }
 
+    private BooVariable isServerReachable = new BooVariable();
+
+    private Button onlbtn;
+
+    private CheckBox srvCheckbox;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wmain);
+
+        onlbtn = (Button) findViewById(R.id.button3);
+        srvCheckbox = (CheckBox) findViewById(R.id.checkBox2);
 
         this.setTitle("Wallet Kubritzki_Zsolt");
         setStep(0);
@@ -74,11 +89,25 @@ public class WMain extends Activity {
         db.getReadableDatabase();
 
 
-        if (db.getfirstrun().equals("true")){
-            Intent frst = new Intent(WMain.this,Firstrun.class);
+        if (db.getfirstrun().equals("true")) {
+            Intent frst = new Intent(WMain.this, Firstrun.class);
             startActivity(frst);
-
         }
+
+        onlbtn.setEnabled(false);
+
+        isServerReachable.setListener(new BooVariable.ChangeListener() {
+            @Override
+            public void onChange() {
+                if (isServerReachable.isBoo()) {
+                    enableOnlineBtn(true);
+                } else {
+                    enableOnlineBtn(false);
+                }
+            }
+        });
+
+        new Tester().execute();
 
         ArrayList<String> yearmonth = db.getallmonth();
         final ArrayAdapter<String> ymadapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,android.R.id.text1,yearmonth);
@@ -209,11 +238,9 @@ public class WMain extends Activity {
         setMonths(savedInstanceState.getString("Month"));
         setDay(savedInstanceState.getString("Day"));
         SQLiteDbase db = new SQLiteDbase(this);
-//        db.getReadableDatabase();
         ListView lista = (ListView) findViewById(R.id.ALista);
         if (getStep()==2){
             setTitle(getMonths()+" "+getDay());
-            //db.getReadableDatabase();
             SimpleAdapter sa = new SimpleAdapter(this,db.gettimeandvalue(getDay(),getMonths()),
                     android.R.layout.two_line_list_item, new String[] { "Line1","Line2" },
                     new int[] {android.R.id.text1, android.R.id.text2});
@@ -353,6 +380,21 @@ public class WMain extends Activity {
 
     }
 
+
+    public void enableOnlineBtn(final boolean bl) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (bl) {
+                    onlbtn.setEnabled(true);
+                    srvCheckbox.setChecked(true);
+                } else {
+                    onlbtn.setEnabled(false);
+                    srvCheckbox.setChecked(false);
+                }
+            }
+        });
+    }
 
 
     class UploadData extends AsyncTask<String, String, String> {
@@ -538,11 +580,25 @@ public class WMain extends Activity {
 
      class Tester extends AsyncTask<String, String, Boolean> {
 
+         boolean result = false;
+
         @Override
         protected Boolean doInBackground(String... params) {
-            boolean result = checkActiveInternetConnection();
-            return result;
+            try {
+                result = checkActiveInternetConnection();
+                isServerReachable.setBoo(result);
+                Log.d("Test result", "Server reachable: "+result);
+                return result;
+            } catch (Exception ex){
+                Log.e("Info", "Error: ", ex);
+            }
+
+            return false;
         }
+
+         protected void onPostExecute(Boolean result) {
+                 Toast.makeText(getApplicationContext(), "Server status updated: "+result, Toast.LENGTH_LONG).show();
+         }
 
 
     }
@@ -576,6 +632,5 @@ public class WMain extends Activity {
         }
         return false;
     }
-
 
 }
