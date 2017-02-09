@@ -581,13 +581,40 @@ public class WMain extends Activity {
      class Tester extends AsyncTask<String, String, Boolean> {
 
          boolean result = false;
+         int success = 0;
+         String msg;
 
         @Override
         protected Boolean doInBackground(String... params) {
             try {
                 result = checkActiveInternetConnection();
+                if (result) {
+                    try {
+                        JSONObject json = jsonParser.makeHttpRequest(
+                                "http://10.0.2.2/wallet/test_server.php", "GET", null);
+                        // full json response
+                        Log.d("Attempt getting status", json.toString());
+
+                        // json success element
+                        success = json.getInt("success");
+
+                        if (success == 1) {
+                            result = true;
+                            msg = "working";
+                        } else {
+                            result = false;
+                            msg = "not working";
+                        }
+                    } catch (Exception ex) {
+                        msg = "not reachable";
+                        result = false;
+                    }
+
+                } else {
+                    msg = "device offline";
+                }
                 isServerReachable.setBoo(result);
-                Log.d("Test result", "Server reachable: "+result);
+                Log.d("Test result", "Server reachable: "+msg);
                 return result;
             } catch (Exception ex){
                 Log.e("Info", "Error: ", ex);
@@ -597,7 +624,7 @@ public class WMain extends Activity {
         }
 
          protected void onPostExecute(Boolean result) {
-                 Toast.makeText(getApplicationContext(), "Server status updated: "+result, Toast.LENGTH_LONG).show();
+                 Toast.makeText(getApplicationContext(), "Server status updated: "+msg, Toast.LENGTH_LONG).show();
          }
 
 
