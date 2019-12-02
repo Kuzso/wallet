@@ -4,12 +4,8 @@
     <string name="app_name">Wallet</string>
     <string name="uvenow">Ennyi pénzed van:</string>
     <string name="gonldata">Online adatok lekérése</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Adatok feltöltése</string>
     <string name="logout">Kijelentkezés</string>
-    <string name="title_activity_income_add">Income_add</string>
-    <string name="title_activity_props">props</string>
-    <string name="title_activity_firstrun">Első indítás</string>
     <string name="title_activity_online">Online</string>
 
 </resources>

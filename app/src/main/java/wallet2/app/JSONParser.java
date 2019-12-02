@@ -63,11 +63,12 @@ public class JSONParser {
             // Declare a string builder to help with the parsing.
             StringBuilder sb = new StringBuilder();
             // Declare a string to store the JSON object data in string form.
-            String line = null;
+            String line;
+            line = null;
 
-            // Build the string until null.
+            /* Build the string until null. */
             while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
+                sb.append(line).append("\n");
             }
 
             // Close the input stream.
@@ -93,14 +94,14 @@ public class JSONParser {
 
     // function get json from url
     // by making HTTP POST or GET mehtod
-    public JSONObject makeHttpRequest(String url, String method,
-                                      List<NameValuePair> params) {
+    JSONObject makeHttpRequest(String url, String method,
+                               List<NameValuePair> params) {
 
         // Making HTTP request
         try {
 
             // check for request method
-            if(method == "POST"){
+            if(method.equals("POST")){
                 // request method is POST
                 // defaultHttpClient
                 DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -114,7 +115,7 @@ public class JSONParser {
                 HttpEntity httpEntity = httpResponse.getEntity();
                 is = httpEntity.getContent();
 
-            }else if(method == "GET"){
+            }else if(method.equals("GET")){
                 // request method is GET
                 DefaultHttpClient httpClient = new DefaultHttpClient();
 
@@ -142,9 +143,9 @@ public class JSONParser {
             BufferedReader reader = new BufferedReader(new InputStreamReader(
                     is, "iso-8859-1"), 8);
             StringBuilder sb = new StringBuilder();
-            String line = null;
+            String line;
             while ((line = reader.readLine()) != null) {
-                sb.append(line + "\n");
+                sb.append(line).append("\n");
             }
             is.close();
             json = sb.toString();
